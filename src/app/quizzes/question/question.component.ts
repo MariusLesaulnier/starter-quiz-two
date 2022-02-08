@@ -6,7 +6,7 @@ import { Quiz } from '../../../models/quiz.model';
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.scss']
 })
-export class QuizComponent implements OnInit {
+export class QuestionComponent implements OnInit {
 
   @Input()
   quiz: Quiz;

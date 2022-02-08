@@ -1,1 +1,13 @@
 @import '../../../styles/card.scss';
+
+.input-custom{
+  border:none;
+  border-bottom: 1px solid lightgray ;
+  font-size:.8em;
+}
+.input-custom:focus{
+  outline: none;
+}
+.titles{
+  margin-top: 1em;
+}

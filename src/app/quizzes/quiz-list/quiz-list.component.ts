@@ -12,15 +12,21 @@ export class QuizListComponent implements OnInit {
   public quizList: Quiz[] = [];
 
   constructor(public quizService: QuizService) {
+    quizService.getQuizzes();
     this.quizService.quizzes$.subscribe((quizList) => {
       this.quizList = quizList;
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
-  quizSelected(selected: boolean) {
+  deleteQuiz(quiz: Quiz): void{
+    console.log('delete quiz:', quiz);
+    this.quizService.deleteQuiz(quiz);
+  }
+  quizSelected(selected: boolean): void {
     console.log('event received from child:', selected);
   }
+
 }
