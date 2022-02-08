@@ -1,5 +1,24 @@
 <div class="card">
+  <h2>Create a new Quiz</h2>
+  <form class="quiz-form">
+    <div class="titles">
+      <label for="title">
+        Title <br>
+        <input class="input-custom" type="text" id="name" [formControlName]="'name'">
+      </label>
+    </div>
 
+    <div class="titles">
+      <label for="theme">
+        Theme <br>
+        <select class="input-custom" id="theme" [formControlName]="'theme'">
+          <option value="">--Please choose a theme--</option>
+        </select>
+      </label>
+    </div>
+
+
+    <br>
+    <button type="submit" class="button-card">Create</button>
+  </form>
 </div>
-<!-- Uncomment below to see your form structure and how it changes-->
-<!-- <br><br>{{quizForm.getRawValue() | json}}-->

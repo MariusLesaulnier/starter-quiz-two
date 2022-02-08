@@ -10,6 +10,9 @@ import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
 import {HttpClientModule} from '@angular/common/http';
 import {EditQuizComponent} from './quizzes/quiz-edit/quiz-edit.component';
 import {AppRoutingModule} from './app.routing.module';
+import {QuestionFormComponent} from './quizzes/question.form/question-form.component';
+import {QuestionListComponent} from './quizzes/question.list/question-list.component';
+import {QuestionComponent} from './quizzes/question/question.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import {AppRoutingModule} from './app.routing.module';
     QuizComponent,
     HeaderComponent,
     QuizFormComponent,
-    EditQuizComponent
+    EditQuizComponent,
+    QuestionFormComponent,
+    QuestionListComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
