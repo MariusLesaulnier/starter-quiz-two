@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, of} from 'rxjs';
-import { Quiz } from '../models/quiz.model';
-import { QUIZ_LIST } from '../mocks/quiz-list.mock';
+
 import {HttpClient} from '@angular/common/http';
+import {Question} from '../models/question.model';
+import {Quiz} from "../models/quiz.model";
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class QuizService {
+export class QuestionService {
   /**
    * Services Documentation:
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
@@ -18,7 +19,7 @@ export class QuizService {
     * The list of quiz.
     * The list is retrieved from the mock.
     */
-  private quizzes: Quiz[] = QUIZ_LIST;
+  private questions: Question[];
 
   /*url var*/
   private url = 'https://raw.githubusercontent.com/tom3883/starter-quizz-2022/f1835686a57a88cd2d46b04166155e9358786300/quiz-data.json';
@@ -28,34 +29,28 @@ export class QuizService {
    * Observable which contains the list of the quiz.
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
    */
-  public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(QUIZ_LIST);
+  public questions$: BehaviorSubject<Question[]> = new BehaviorSubject([]);
   constructor(http: HttpClient) {
     this.http = http;
   }
 
-  addQuiz(quiz: Quiz): void {
+  addQuestion(question: Question): void {
     // You need here to update the list of quiz and then update our observable (Subject) with the new list
     // More info: https://angular.io/tutorial/toh-pt6#the-searchterms-rxjs-subject
-    this.quizzes.push(quiz);
-    this.quizzes$.next(this.quizzes);
+    this.questions.push(question);
+    this.questions$.next(this.questions);
   }
-  deleteQuiz(quiz: Quiz): void {
+  deleteQuestion(question: Question): void {
     // You need here to update the list of quiz and then update our observable (Subject) with the new list
     // More info: https://angular.io/tutorial/toh-pt6#the-searchterms-rxjs-subject
-    const indexOfQuiz: number = this.quizzes.indexOf(quiz);
-    this.quizzes.splice(indexOfQuiz, 1);
-    this.quizzes$.next(this.quizzes);
+    const indexOfQuestion: number = this.questions.indexOf(question);
+    this.questions.splice(indexOfQuestion, 1);
+    this.questions$.next(this.questions);
   }
-
-  getQuizzes(): void {
-    this.http.get<Quiz[]>(this.url).subscribe((quiz) => {
-      this.quizzes = quiz;
-      this.quizzes$.next(quiz);
+  getQuestions(): void {
+    this.http.get<Question[]>(this.url).subscribe((question) => {
+      this.questions = question;
+      this.questions$.next(question);
     });
-  }
-
-  getQuiz(id: number): Observable<Quiz> {
-    const quiz = this.quizzes[id];
-    return of(quiz);
   }
 }

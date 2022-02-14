@@ -1,4 +1,9 @@
 <div class="card">
-  <h2>Create a new Quiz</h2>
+  <h2> Question: {{question.label}}</h2>
+  <p> Answers: {{question.answers}}</p>
+  <div>
+    <button class="button-card" (click)="deleteQuestion()">Delete</button>
 
+  </div>
 </div>
+
