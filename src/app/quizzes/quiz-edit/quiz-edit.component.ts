@@ -24,7 +24,7 @@ export class EditQuizComponent implements OnInit{
 
   getQuiz(): void{
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.quizService.getQuiz(id).subscribe(q => this.quiz = q);
+    this.quiz = this.quizService.getQuiz(id);
   }
 
   goBack(): void {

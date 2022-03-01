@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import {HttpClient} from '@angular/common/http';
+import {Question} from '../models/question.model';
 
 
 @Injectable({
@@ -29,6 +30,7 @@ export class QuizService {
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
    */
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(QUIZ_LIST);
+
   constructor(http: HttpClient) {
     this.http = http;
   }
@@ -54,8 +56,9 @@ export class QuizService {
     });
   }
 
-  getQuiz(id: number): Observable<Quiz> {
+  getQuiz(id: number): Quiz {
     const quiz = this.quizzes[id];
-    return of(quiz);
+    return quiz;
   }
+
 }

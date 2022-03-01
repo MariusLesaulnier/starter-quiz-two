@@ -3,6 +3,8 @@ import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import { QuestionService } from '../../../services/question.service';
 import { Quiz } from '../../../models/quiz.model';
 import {Question} from '../../../models/question.model';
+import {QuizService} from '../../../services/quiz.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-question-form',
@@ -15,13 +17,15 @@ export class QuestionFormComponent implements OnInit {
 
   // Note: We are using here ReactiveForms to create our form. Be careful when you look for some documentation to
   // avoid TemplateDrivenForm (another type of form)
-  constructor(public formBuilder: FormBuilder, public questionService: QuestionService){
+  constructor(public formBuilder: FormBuilder, public questionService: QuestionService, public quizService: QuizService,
+              private route: ActivatedRoute){
     // Form creation
     this.initializeQuestionForm();
     // You can also add validators to your inputs such as required, maxlength or even create your own validator!
     // More information: https://angular.io/guide/reactive-forms#simple-form-validation
     // Advanced validation: https://angular.io/guide/form-validation#reactive-form-validation
   }
+
   ngOnInit(): void {
   }
 
@@ -53,6 +57,7 @@ export class QuestionFormComponent implements OnInit {
     questionToCreate.answers = [];
     console.log('Add question: ', questionToCreate);
     this.questionService.addQuestion(questionToCreate);
+    console.log('ListOfQuestions: ', this.questionService);
   }
 
 }
